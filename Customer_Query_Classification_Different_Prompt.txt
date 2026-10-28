@@ -1,0 +1,110 @@
+EXPERIMENT 1: CUSTOMER QUERY CLASSIFICATION USING PROMPT ENGINEERING
+
+1. AIM
+
+To create a prompt that identifies the purpose of an e-commerce customer's message and assigns it to one suitable support category.
+
+2. OVERVIEW
+
+Online stores receive different types of customer messages. A customer may ask about an order's arrival, a shipment, a refund, a payment, cancellation, a faulty item, a return, or account access. Prompt engineering can guide an AI model to classify each message consistently.
+
+3. INPUT AND OUTPUT
+
+Input:
+One customer message written in natural language.
+
+Output:
+One category name only.
+
+Available categories:
+Delivery, Shipping, Refund, Payment, Cancellation, Defect, Return, Account, Unknown.
+
+4. DESIGNED PROMPT
+
+You are an automated support-ticket classifier for an online shopping website.
+
+Read the customer message and determine the single category that best represents the customer's main request or problem.
+
+Choose exactly one category from this list:
+
+Delivery
+Shipping
+Refund
+Payment
+Cancellation
+Defect
+Return
+Account
+Unknown
+
+Use these decision guidelines:
+
+- Delivery: Choose this when the customer asks about an order's arrival, delivery date, failed delivery, or an order marked delivered but not received.
+- Shipping: Choose this when the issue concerns dispatch, shipment tracking, transit progress, shipping options, or shipping fees.
+- Refund: Choose this when the customer wants to know about money being returned, a refund delay, or the amount refunded.
+- Payment: Choose this when the customer reports a payment failure, an unexpected charge, a duplicate deduction, or a transaction problem.
+- Cancellation: Choose this when the customer wants to stop an order or asks about cancelling an order.
+- Defect: Choose this when the item is broken, damaged, faulty, or does not work properly.
+- Return: Choose this when the customer wants to send an item back or asks how to start a return.
+- Account: Choose this when the problem involves signing in, a password, a locked profile, or account details.
+- Unknown: Choose this when the message is unrelated to these categories or does not provide enough information to identify the issue.
+
+Classification procedure:
+1. Read the whole message.
+2. Identify the customer's main concern rather than focusing on an unrelated detail.
+3. Compare the concern with the category guidelines.
+4. Select only one best-fitting category.
+5. If no category fits, select Unknown.
+
+Output restrictions:
+Return exactly one category name from the list. Do not add a reason, heading, punctuation, quotation marks, or any other words.
+
+Customer message: {customer_query}
+
+Category:
+
+5. TEST CASES
+
+Test 1
+Input: The courier says my parcel was delivered, but I cannot find it.
+Expected output: Delivery
+
+Test 2
+Input: The tracking page has not changed for four days.
+Expected output: Shipping
+
+Test 3
+Input: My cancelled order's refund is still missing.
+Expected output: Refund
+
+Test 4
+Input: My card was charged, but the website says the transaction failed.
+Expected output: Payment
+
+Test 5
+Input: Please stop my order before it is sent.
+Expected output: Cancellation
+
+Test 6
+Input: The headphones I purchased do not turn on.
+Expected output: Defect
+
+Test 7
+Input: How can I arrange a pickup to send these shoes back?
+Expected output: Return
+
+Test 8
+Input: My profile is locked and I cannot sign in.
+Expected output: Account
+
+Test 9
+Input: Can you explain how solar panels generate electricity?
+Expected output: Unknown
+
+6. EXPECTED BEHAVIOUR
+
+The classifier should choose a category based on the customer's main concern. It should distinguish between delivery and shipping, payment and refund, and a defective item and a request to return an item. Messages unrelated to customer support categories should be labelled Unknown.
+
+7. RESULT
+
+A new prompt was designed to classify e-commerce customer messages into one of nine predefined categories. The prompt includes decision guidelines, output restrictions, and test cases to check whether the classifications follow the required format.

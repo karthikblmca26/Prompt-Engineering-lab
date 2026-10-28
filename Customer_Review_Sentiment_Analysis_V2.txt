@@ -1,0 +1,93 @@
+EXPERIMENT 2: CUSTOMER REVIEW SENTIMENT CLASSIFICATION
+
+1. AIM
+
+To develop a prompt that identifies the overall feeling expressed in a customer review and assigns the review to one of three sentiment labels.
+
+2. INTRODUCTION
+
+Customer feedback helps an online shopping company understand how customers feel about products and services. A sentiment-classification prompt gives an AI model clear instructions for identifying whether a review is positive, negative, or neutral.
+
+3. INPUT AND OUTPUT FORMAT
+
+Input:
+A customer review written in natural language.
+
+Allowed output labels:
+Positive
+Negative
+Neutral
+
+The model must return one label only.
+
+4. ORIGINAL PROMPT
+
+You are an automated review evaluator for an online shopping platform.
+
+Read the customer review provided below. Decide which single label best describes the customer's overall attitude.
+
+Choose from these labels only:
+
+Positive — The customer communicates approval, satisfaction, enjoyment, or praise.
+
+Negative — The customer communicates frustration, dissatisfaction, disappointment, or criticism.
+
+Neutral — The review mainly states facts or describes an experience without clearly expressing approval or dissatisfaction.
+
+How to decide:
+1. Interpret the review as a whole instead of judging it by one word.
+2. Identify whether the main message shows satisfaction, dissatisfaction, or neither.
+3. For a review containing both praise and criticism, select the sentiment that is strongest in the overall message.
+4. Pay attention to negation. For example, saying a product is “not reliable” expresses a negative sentiment.
+5. If the review only gives factual details and does not reveal a clear opinion, choose Neutral.
+6. Do not invent feelings that are not supported by the review.
+
+Strict output format:
+Return exactly one word: Positive, Negative, or Neutral.
+Do not add punctuation, explanations, labels, or any other text.
+
+Review to classify: {review}
+
+Answer:
+
+5. TEST CASES
+
+Test Case 1
+Input Review: The backpack is sturdy, stylish, and worth every rupee.
+Expected Output: Positive
+
+Test Case 2
+Input Review: The screen cracked on the first day, and customer service did not help.
+Expected Output: Negative
+
+Test Case 3
+Input Review: The parcel was left at the reception desk at 3 p.m.
+Expected Output: Neutral
+
+Test Case 4
+Input Review: Setting up the new speaker was easy, and the sound is fantastic.
+Expected Output: Positive
+
+Test Case 5
+Input Review: The fabric feels cheap, and the stitching came apart after one use.
+Expected Output: Negative
+
+Test Case 6
+Input Review: The order included a blue shirt in size medium.
+Expected Output: Neutral
+
+Test Case 7
+Input Review: The design is attractive, but the device keeps restarting unexpectedly.
+Expected Output: Negative
+
+Test Case 8
+Input Review: I expected very little, but the quality turned out to be excellent.
+Expected Output: Positive
+
+6. EXPECTED BEHAVIOUR
+
+The classifier should use the full meaning of each review to choose one sentiment. Reviews that mainly express praise should be labelled Positive; reviews that mainly express complaints should be labelled Negative; and factual reviews without a clear opinion should be labelled Neutral.
+
+7. RESULT
+
+A new prompt was prepared for classifying online shopping reviews into Positive, Negative, or Neutral. It includes decision guidelines, varied test cases, and a strict single-word output format.
